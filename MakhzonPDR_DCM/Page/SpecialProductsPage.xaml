@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakhzonPDR_DCM.Page.SpecialProductsPage"
+             Title="📂 PRODUITS MACHINES"
+             BackgroundColor="#F4F6F8">
+    <ScrollView>
+    <Grid RowDefinitions="Auto, *">
+        <!-- البحث -->
+        <SearchBar Grid.Row="0" 
+        x:Name="searchBar"
+        Placeholder="Rechercher par Nom, Ref أو Machine..." />
+        <!--TextChanged="OnSearchTextChanged"
+        Margin="10" />-->
+        <!-- القائمة -->
+       <CollectionView x:Name="SpecialItemsCollection" VerticalScrollBarVisibility="Always">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <!-- خيارات السحب (يمين) للتعديل والحذف -->
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Modifier" BackgroundColor="#FFC107" Invoked="OnEditClicked" CommandParameter="{Binding .}" />
+                                <SwipeItem Text="Supprimer" BackgroundColor="#DC3545" Invoked="OnDeleteClicked" CommandParameter="{Binding .}" />
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <!-- تصميم العنصر الرئيسي -->
+                        <Frame BackgroundColor="White" Margin="10,5" Padding="15" CornerRadius="15" HasShadow="False" BorderColor="#F0F0F0">
+                            <Grid ColumnDefinitions="*, Auto">
+                                <VerticalStackLayout Grid.Column="0" Spacing="5">
+                                    <Label Text="{Binding INTITULE}" FontSize="16" FontAttributes="Bold" TextColor="#1A2B4C"/>
+                                    <Label Text="{Binding MACHINE}" FontSize="13" TextColor="#A5061E" FontAttributes="Bold"/>
+                                    <Label Text="{Binding REF, StringFormat='Ref: {0}'}" FontSize="11" TextColor="Gray"/>
+                                </VerticalStackLayout>
+
+                                <!-- أيقونات سريعة للتفاعل -->
+                                <HorizontalStackLayout Grid.Column="1" Spacing="10" VerticalOptions="Center">
+                                    <Label Text="✏️" FontSize="20" VerticalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnEditClicked" CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Text="🗑️" FontSize="20" VerticalOptions="Center">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnDeleteClicked" CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+
+        <!-- زر الإضافة العائم في هذه الصفحة أيضاً -->
+        <Button Grid.Row="1" Text="+" FontSize="30" BackgroundColor="#A5061E" TextColor="White" 
+             HeightRequest="60" WidthRequest="60" CornerRadius="30" 
+             VerticalOptions="End" HorizontalOptions="End" Margin="20"
+             Clicked="OnAddNewClicked"/>
+    </Grid>
+  </ScrollView>
+</ContentPage>

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "618269069170",
+    "firebase_url": "https://makhzonpdr-default-rtdb.firebaseio.com",
+    "project_id": "makhzonpdr",
+    "storage_bucket": "makhzonpdr.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618269069170:android:8ebbc3caea6a9d850e17eb",
+        "android_client_info": {
+          "package_name": "Makhzon.PDR_2026"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8M_NDAz8mibwTy-x5VRmBDurtNjvgPBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618269069170:android:201f04b208686ab40e17eb",
+        "android_client_info": {
+          "package_name": "com.companyname.makhzonpdr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8M_NDAz8mibwTy-x5VRmBDurtNjvgPBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

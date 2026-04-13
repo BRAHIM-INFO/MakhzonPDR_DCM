@@ -1,0 +1,6 @@
+@MakhzonAPI_HostAddress = http://localhost:5025
+
+GET {{MakhzonAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

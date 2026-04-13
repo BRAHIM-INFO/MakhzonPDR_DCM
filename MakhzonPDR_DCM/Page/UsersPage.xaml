@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakhzonPDR_DCM.Page.UsersPage"
+             Title="👤 Liste des Utilisateurs">
+    <ScrollView>
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20">
+
+        <!-- عنوان الصفحة -->
+            <Label Grid.Row="0" Text="Liste des Utilisateurs" 
+            FontSize="24" FontAttributes="Bold" TextColor="#A5061E" Margin="0,0,0,20"/>
+
+        <!-- قائمة المستخدمين -->
+        <CollectionView Grid.Row="1" x:Name="UsersCollection">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BackgroundColor="White" Margin="0,5" Padding="15" CornerRadius="10" HasShadow="False" BorderColor="#EEE">
+                        <Grid ColumnDefinitions="50, *, Auto">
+                            <!-- أيقونة المستخدم -->
+                            <Label Grid.Column="0" Text="👤" FontSize="25" VerticalOptions="Center"/>
+
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="10,0">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Email}" FontSize="12" TextColor="Gray"/>
+                                <Label Text="{Binding Role}" FontSize="10" TextColor="#A5061E" FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+
+                            <!-- زر الحذف -->
+                            <Button Grid.Column="2" 
+                                 Text="🗑️" 
+                                 Clicked="OnDeleteUserClicked" 
+                                 CommandParameter="{Binding .}"
+                                 BackgroundColor="Transparent"
+                                 FontSize="20"
+                                 HeightRequest="40"
+                                 WidthRequest="40"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- زر إضافة مستخدم جديد -->
+        <Button Grid.Row="2" Text="+ Ajouter un Travailleur" 
+             Clicked="OnAddUserClicked"
+             BackgroundColor="#A5061E" TextColor="White" 
+             FontAttributes="Bold" CornerRadius="25" HeightRequest="50" Margin="0,10,0,0"/>
+    </Grid>
+    </ScrollView>
+</ContentPage>

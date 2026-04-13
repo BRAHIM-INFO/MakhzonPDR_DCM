@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakhzonPDR_DCM.Page.StockListPage"
+             Title=" 📤 STOCK MAGASIN DCM"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, *" Padding="10">
+
+        <!-- 1. شريط الأزرار العلوي (زر التحديث) -->
+        <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Margin="0,0,0,10">
+            <!-- مساحة فارغة أو عنوان إضافي في اليسار -->
+            <Label Grid.Column="0" Text="Liste des Produits" VerticalOptions="Center" FontAttributes="Bold" TextColor="Gray"/>
+
+            <!-- زر التحديث في اليمين -->
+            <Button Grid.Column="1" 
+                Text="🔄 Actualiser" 
+                Clicked="OnRefreshClicked"
+                BackgroundColor="#A5061E" 
+                TextColor="White" 
+                HeightRequest="40" 
+                CornerRadius="8" 
+                FontAttributes="Bold"
+                Padding="15,0"/>
+        </Grid>
+
+        <!-- 2. شريط البحث -->
+        <SearchBar Grid.Row="1" x:Name="searchBar" 
+               Placeholder="Rechercher par REF ou Désignation..."
+               TextChanged="OnSearchTextChanged"
+               Margin="0,0,0,0" BackgroundColor="#F5F5F5"/>
+
+        <!-- 3. رأس الجدول -->
+        <Grid Grid.Row="2" BackgroundColor="#F0F0F0" Padding="5" ColumnDefinitions="80, *, 60, 80, 80" Margin="0,10,0,0">
+            <Label Grid.Column="0" Text="REF" FontAttributes="Bold" FontSize="12"/>
+            <Label Grid.Column="1" Text="Désignation" FontAttributes="Bold" FontSize="12"/>
+            <Label Grid.Column="2" Text="QTE" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
+            <Label Grid.Column="3" Text="EN_STOCK" FontAttributes="Bold" FontSize="12" HorizontalOptions="Center"/>
+            <Label Grid.Column="4" Text="CASIER" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+            <Label Grid.Column="5" Text="DATE_MAJ" FontSize="11" TextColor="Black" HorizontalOptions="End"/>
+        </Grid>
+
+        <!-- 4. مؤشر التحميل -->
+        <ActivityIndicator Grid.Row="3" x:Name="loadingIndicator" IsRunning="False" 
+                       VerticalOptions="Center" HorizontalOptions="Center" Color="#A5061E"/>
+
+        <!-- 5. قائمة البيانات -->
+      <CollectionView Grid.Row="3" x:Name="StockCollection" SelectionMode="Single" SelectionChanged="OnStockSelected">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="0" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="80, *, 60, 80, 80" Padding="5">
+
+                         <!--تم تصحيح ColumnSpan ليصبح 5--> 
+                        <BoxView Grid.ColumnSpan="6" HeightRequest="1" Color="#EEEEEE" VerticalOptions="End"/>
+
+                        <Label Grid.Column="0" Text="{Binding REF}" FontSize="11" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding INTITULE}" FontSize="11" MaxLines="2" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" Text="{Binding QTE}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#A5061E" FontAttributes="Bold"/>
+                        <Label Grid.Column="3" Text="{Binding en_Stock}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" TextColor="#A5061E" FontAttributes="Bold"/> 
+                        <Label Grid.Column="4" Text="{Binding CASIER}" FontSize="11" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+                        <Label Grid.Column="5" Text="{Binding LastUpdated, StringFormat='{0:dd/MM HH:mm:ss}'}" FontSize="11" TextColor="Black" FontAttributes="Bold" HorizontalOptions="End"/>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+       
+
+       
+
+    </Grid>
+</ContentPage>

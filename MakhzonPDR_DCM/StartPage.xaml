@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MakhzonPDR_DCM.StartPage"
+             Title="StartPage">
+    <Grid RowDefinitions="*, Auto" Padding="30" BackgroundColor="#A5061E" >
+
+        <!-- القسم العلوي: النصوص والصورة الدائرية -->
+        <VerticalStackLayout Grid.Row="0" Spacing="20" VerticalOptions="Center">
+
+            <Label Text="COSIDER TP           DCM MSILA" 
+                TextColor="White" 
+                FontSize="38" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center" />
+
+            <!-- الشعار: تأكد أن الصورة شفافة PNG لتختفي الخلفية الحمراء التي تظهر في صورتك -->
+            <Image Source="cosider_logo_white.png" 
+                HeightRequest="100" 
+                HorizontalOptions="Center" />
+
+            <!-- الدائرة المركزية -->
+            <Border Stroke="White"
+                 StrokeThickness="3"
+                 HeightRequest="250"
+                 WidthRequest="250"
+                 HorizontalOptions="Center"
+                 BackgroundColor="White"
+                 Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="125" />
+                </Border.StrokeShape>
+
+                <Image Source="warehouse_graphic.png" 
+                    Aspect="AspectFill" 
+                    Margin="0" />
+            </Border>
+        </VerticalStackLayout>
+
+        <!-- القسم السفلي: الأزرار البيضاوية -->
+        <VerticalStackLayout Grid.Row="1" Spacing="15" Margin="0,0,0,30">
+
+            <!-- زر LOG IN: حدود كحلية، نص أبيض، خلفية شفافة -->
+            <!--<Button Text="LOG IN" 
+                 Clicked="OnLoginClicked"
+                 BackgroundColor="#A5061E" 
+                 TextColor="White" 
+                 BorderColor="White" 
+                 BorderWidth="2"
+                 HeightRequest="60" 
+                 CornerRadius="30" 
+                 FontSize="18"
+                 FontAttributes="Bold" />-->
+
+            <!-- زر SIGN UP: خلفية بيضاء، نص أحمر -->
+            <Button Text="START " 
+                 Clicked="OnLoginClicked"
+                 BackgroundColor="White" 
+                 TextColor="#B31F24" 
+                 HeightRequest="60" 
+                 CornerRadius="30" 
+                 FontSize="18"
+                 FontAttributes="Bold" />
+
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentPage>
